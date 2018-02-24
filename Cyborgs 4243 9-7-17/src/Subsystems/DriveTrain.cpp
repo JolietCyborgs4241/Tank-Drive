@@ -2,39 +2,22 @@
 #include "Commands/TankDriveWithJoystick.h"
 using namespace frc;
 
-DriveTrain::DriveTrain() :
-		Subsystem("DriveTrain")
-{
-	rightMotor1 = new WPI_TalonSRX(1);
-	rightMotor2 = new WPI_TalonSRX(2);
-	leftMotor1 = new WPI_TalonSRX(4);
-	leftMotor2 = new WPI_TalonSRX(5);
-	myDrive = new frc::RobotDrive(rightMotor1, rightMotor2, leftMotor1, leftMotor2);
-
-
-
-
+DriveTrain::DriveTrain() : Subsystem("DriveTrain") {
+	rightMotor1 = new WPI_TalonSRX(4);
+	rightMotor2 = new WPI_TalonSRX(6);
+	leftMotor1 = new WPI_TalonSRX(1);
+	leftMotor2 = new WPI_TalonSRX(2);
 }
 
-void DriveTrain::InitDefaultCommand()
-{
-	myDrive->SetSafetyEnabled(false);
-
+void DriveTrain::InitDefaultCommand() {
 	SetDefaultCommand(new TankDriveWithJoystick());
 }
 
-void DriveTrain::Drive(double left, double right)
-{
-	myDrive->TankDrive(left, right);
-
-}
-
-void DriveTrain::Drive(Joystick* joy) {
-	Drive(-joy->GetY(), -joy->GetRawAxis(5));
-	rightMotor1->Set(-joy->GetY());
-	rightMotor2->Set(-joy->GetY());
-	leftMotor1->Set(-joy->GetRawAxis(5));
-	leftMotor2->Set(-joy->GetRawAxis(5));
+void DriveTrain::Drive(double left, double right) {
+	leftMotor1->Set(-left);
+	leftMotor2->Set(-left);
+	rightMotor1->Set(right);
+	rightMotor2->Set(right);
 }
 
 void DriveTrain::AutoDriveForward(){
