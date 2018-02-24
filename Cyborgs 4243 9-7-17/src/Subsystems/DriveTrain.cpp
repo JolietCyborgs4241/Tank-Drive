@@ -1,20 +1,17 @@
 #include "DriveTrain.h"
 #include "Commands/TankDriveWithJoystick.h"
-
+using namespace frc;
 
 DriveTrain::DriveTrain() :
 		Subsystem("DriveTrain")
 {
-	rightMotor1 = new CANTalon(1);
-	rightMotor2 = new CANTalon(2);
-	leftMotor1 = new CANTalon(3);
-	leftMotor2 = new CANTalon(4);
-	fakeLeft1 = new Talon(0);
-	fakeLeft2 = new Talon(1);
-	fakeRight1 = new Talon(2);
-	fakeRight2 = new Talon(4);
+	rightMotor1 = new WPI_TalonSRX(1);
+	rightMotor2 = new WPI_TalonSRX(2);
+	leftMotor1 = new WPI_TalonSRX(4);
+	leftMotor2 = new WPI_TalonSRX(5);
+	myDrive = new frc::RobotDrive(rightMotor1, rightMotor2, leftMotor1, leftMotor2);
 
-	myDrive = new RobotDrive (fakeLeft1, fakeLeft2, fakeRight1, fakeRight2);
+
 
 
 }
@@ -34,10 +31,10 @@ void DriveTrain::Drive(double left, double right)
 
 void DriveTrain::Drive(Joystick* joy) {
 	Drive(-joy->GetY(), -joy->GetRawAxis(5));
-	rightMotor1->Set(fakeRight1->Get());
-	rightMotor2->Set(fakeRight2->Get());
-	leftMotor1->Set(fakeLeft1->Get());
-	leftMotor2->Set(fakeLeft2->Get());
+	rightMotor1->Set(-joy->GetY());
+	rightMotor2->Set(-joy->GetY());
+	leftMotor1->Set(-joy->GetRawAxis(5));
+	leftMotor2->Set(-joy->GetRawAxis(5));
 }
 
 void DriveTrain::AutoDriveForward(){

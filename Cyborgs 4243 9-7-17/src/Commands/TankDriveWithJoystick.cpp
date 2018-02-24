@@ -1,7 +1,7 @@
 #include "TankDriveWithJoystick.h"
 #include "Robot.h"
-
-TankDriveWithJoystick::TankDriveWithJoystick() :Command ("TankDriveWithJoystick")
+using namespace frc;
+TankDriveWithJoystick::TankDriveWithJoystick() :frc::Command ("TankDriveWithJoystick")
 {
 	Requires(Robot::driveTrain);
 }

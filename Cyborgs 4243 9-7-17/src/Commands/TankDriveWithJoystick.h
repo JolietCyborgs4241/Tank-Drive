@@ -3,7 +3,7 @@
 
 #include "Commands/Command.h"
 
-class TankDriveWithJoystick: public Command{
+class TankDriveWithJoystick: public frc::Command{
 public:
 	TankDriveWithJoystick();
 	void Initialize();

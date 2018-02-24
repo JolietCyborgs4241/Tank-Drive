@@ -9,7 +9,7 @@
 // it from being updated in th future.
 #include "RobotMap.h"
 #include "LiveWindow/LiveWindow.h"
-#include "CANTalon.h"
+#include "ctre/Phoenix.h"
 frc::SpeedController* RobotMap::driveTrainFrontLeftDrive = NULL;
 frc::SpeedController* RobotMap::driveTrainFrontRightDrive = NULL;
 frc::SpeedController* RobotMap::driveTrainRearLeftDrive = NULL;
