@@ -3,10 +3,10 @@
 using namespace frc;
 
 DriveTrain::DriveTrain() : Subsystem("DriveTrain") {
-	rightMotor1 = new WPI_TalonSRX(4);
-	rightMotor2 = new WPI_TalonSRX(6);
-	leftMotor1 = new WPI_TalonSRX(1);
-	leftMotor2 = new WPI_TalonSRX(2);
+	rightMotor1 = new WPI_TalonSRX(2);
+	rightMotor2 = new WPI_TalonSRX(3);
+	leftMotor1 = new WPI_TalonSRX(4);
+	leftMotor2 = new WPI_TalonSRX(5);
 }
 
 void DriveTrain::InitDefaultCommand() {
